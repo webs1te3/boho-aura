@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Bohemia | Macramé Artesanal</title>
+    <style>
+        :root {
+            --color-cream: #EDE0D4;
+            --color-beige: #E6CCB2;
+            --color-sand: #DDB892;
+            --color-caramel: #B08968;
+            --color-brown: #7F5539;
+            --color-coffee: #9C6644;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--color-cream);
+            color: var(--color-brown);
+            line-height: 1.6;
+        }
+        
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .language-btn {
+            background-color: var(--color-sand);
+            color: var(--color-brown);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn:hover {
+            background-color: var(--color-caramel);
+            color: var(--color-cream);
+        }
+        
+        header {
+            background-color: var(--color-coffee);
+            color: var(--color-cream);
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background-color: var(--color-caramel);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav a {
+            color: var(--color-cream);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--color-brown);
+        }
+        
+        .hero {
+            height: 500px;
+            background-image: url('/api/placeholder/800/500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(127, 85, 57, 0.3);
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-sand);
+            color: var(--color-brown);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-coffee);
+            color: var(--color-cream);
+            transform: translateY(-3px);
+        }
+        
+        .about {
+            padding: 5rem 2rem;
+            background-color: var(--color-beige);
+            text-align: center;
+        }
+        
+        .section-title {
+                text-align: center;
+		font-size: 2.2rem;
+   	 margin-bottom: 2rem;
+    	color: var(--color-coffee);
+    	position: relative;
+    	display: block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-coffee);
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .products {
+            padding: 5rem 2rem;
+            background-color: var(--color-cream);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-coffee);
+        }
+        
+        .product-desc {
+            color: var(--color-brown);
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--color-coffee);
+            font-size: 1.2rem;
+        }
+        
+        .contact {
+            padding: 5rem 2rem;
+            background-color: var(--color-sand);
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-coffee);
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--color-beige);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--color-coffee);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: auto;
+            display: inline-block;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--color-brown);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background-color: var(--color-brown);
+            color: var(--color-cream);
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: var(--color-beige);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--color-cream);
+        }
+        
+        .footer-text {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-beige);
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button id="languageToggle" class="language-btn" onclick="toggleLanguage()">English</button>
+    </div>
+
+    <header>
+        <h1 class="logo">AURA BOHEMIA</h1>
+        <p class="tagline lang-es">Decoración artesanal de macramé</p>
+        <p class="tagline lang-en" style="display: none;">Handcrafted macramé decoration</p>
+    </header>
+
+    <nav>
+        <a href="#inicio" class="lang-es">Inicio</a>
+        <a href="#inicio" class="lang-en" style="display: none;">Home</a>
+        
+        <a href="#nosotros" class="lang-es">Nosotros</a>
+        <a href="#nosotros" class="lang-en" style="display: none;">About</a>
+        
+        <a href="#productos" class="lang-es">Productos</a>
+        <a href="#productos" class="lang-en" style="display: none;">Products</a>
+        
+        <a href="#contacto" class="lang-es">Contacto</a>
+        <a href="#contacto" class="lang-en" style="display: none;">Contact</a>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h2 class="hero-title lang-es">Arte en cada nudo</h2>
+            <h2 class="hero-title lang-en" style="display: none;">Art in every knot</h2>
+            
+            <p class="hero-text lang-es">Piezas de macramé únicas para darle vida y calidez a tu espacio</p>
+            <p class="hero-text lang-en" style="display: none;">Unique macramé pieces to bring life and warmth to your space</p>
+            
+            <a href="#productos" class="btn lang-es">Ver Colección</a>
+            <a href="#productos" class="btn lang-en" style="display: none;">View Collection</a>
+        </div>
+    </section>
+
+    <section class="about" id="nosotros">
+        <h2 class="section-title lang-es">Nuestra Historia</h2>
+        <h2 class="section-title lang-en" style="display: none;">Our Story</h2>
+        
+        <div class="about-content">
+            <p class="lang-es">
+                Aura Bohemia nace de la pasión por el diseño de interiores y el arte del macramé. Soy una diseñadora de interiores con alma de artesana, creando piezas únicas que transmiten calidez y personalidad a cada espacio.
+                <br><br>
+                Cada nudo es tejido a mano con amor y dedicación en mi taller ubicado en Lima, Perú. Utilizo materiales de alta calidad, sostenibles y biodegradables, respetando el medio ambiente y creando piezas que perduran en el tiempo.
+                <br><br>
+                Mi misión es transformar espacios ordinarios en lugares extraordinarios, llenos de textura, carácter y un toque bohemio que hace que cada ambiente sea único.
+            </p>
+            
+            <p class="lang-en" style="display: none;">
+                Aura Bohemia was born from a passion for interior design and the art of macramé. I am an interior designer with the soul of an artisan, creating unique pieces that bring warmth and personality to each space.
+                <br><br>
+                Each knot is handwoven with love and dedication in my workshop located in Lima, Peru. I use high-quality, sustainable, and biodegradable materials, respecting the environment and creating pieces that stand the test of time.
+                <br><br>
+                My mission is to transform ordinary spaces into extraordinary places, full of texture, character, and a bohemian touch that makes every environment unique.
+            </p>
+        </div>
+    </section>
+
+    <section class="products" id="productos">
+        <h2 class="section-title lang-es">Nuestros Productos</h2>
+        <h2 class="section-title lang-en" style="display: none;">Our Products</h2>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="/api/placeholder/400/250" alt="Tapiz de pared" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title lang-es">Tapiz de Pared "Luna"</h3>
+                    <h3 class="product-title lang-en" style="display: none;">Wall Tapestry "Luna"</h3>
+                    
+                    <p class="product-desc lang-es">Elegante tapiz de macramé para dar un toque bohemio a tu pared. Elaborado con algodón orgánico y madera de olivo.</p>
+                    <p class="product-desc lang-en" style="display: none;">Elegant macramé tapestry to give a bohemian touch to your wall. Made with organic cotton and olive wood.</p>
+                    
+                    <p class="product-price">S/. 250.00</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/400/250" alt="Colgante para plantas" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title lang-es">Colgante para Plantas "Flora"</h3>
+                    <h3 class="product-title lang-en" style="display: none;">Plant Hanger "Flora"</h3>
+                    
+                    <p class="product-desc lang-es">Dale vida a tus espacios con este hermoso colgante para plantas. Perfecto para interiores y exteriores protegidos.</p>
+                    <p class="product-desc lang-en" style="display: none;">Bring life to your spaces with this beautiful plant hanger. Perfect for indoors and protected outdoor areas.</p>
+                    
+                    <p class="product-price">S/. 120.00</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/400/250" alt="Cortina de macramé" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title lang-es">Cortina "Boho Dreams"</h3>
+                    <h3 class="product-title lang-en" style="display: none;">Curtain "Boho Dreams"</h3>
+                    
+                    <p class="product-desc lang-es">Transforma cualquier entrada con esta impresionante cortina de macramé. Diseño personalizable según tus necesidades.</p>
+                    <p class="product-desc lang-en" style="display: none;">Transform any entrance with this stunning macramé curtain. Customizable design according to your needs.</p>
+                    
+                    <p class="product-price">S/. 380.00</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/400/250" alt="Posavasos de macramé" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title lang-es">Set de Posavasos "Tierra"</h3>
+                    <h3 class="product-title lang-en" style="display: none;">Coaster Set "Tierra"</h3>
+                    
+                    <p class="product-desc lang-es">Set de 6 posavasos tejidos a mano. El detalle perfecto para tu mesa de centro o comedor.</p>
+                    <p class="product-desc lang-en" style="display: none;">Set of 6 hand-woven coasters. The perfect detail for your coffee or dining table.</p>
+                    
+                    <p class="product-price">S/. 85.00</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/400/250" alt="Espejo con macramé" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title lang-es">Espejo "Sol"</h3>
+                    <h3 class="product-title lang-en" style="display: none;">Mirror "Sol"</h3>
+                    
+                    <p class="product-desc lang-es">Espejo redondo decorado con intrincado diseño de macramé. Una pieza focal para cualquier habitación.</p>
+                    <p class="product-desc lang-en" style="display: none;">Round mirror decorated with an intricate macramé design. A focal piece for any room.</p>
+                    
+                    <p class="product-price">S/. 290.00</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/400/250" alt="Bolso de macramé" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title lang-es">Bolso "Andes"</h3>
+                    <h3 class="product-title lang-en" style="display: none;">Bag "Andes"</h3>
+                    
+                    <p class="product-desc lang-es">Bolso de macramé con detalles en cuero. Práctico, elegante y totalmente a la moda.</p>
+                    <p class="product-desc lang-en" style="display: none;">Macramé bag with leather details. Practical, elegant, and totally fashionable.</p>
+                    
+                    <p class="product-price">S/. 180.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <h2 class="section-title lang-es">Contáctanos</h2>
+        <h2 class="section-title lang-en" style="display: none;">Contact Us</h2>
+        
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name" class="lang-es">Nombre</label>
+                    <label for="name" class="lang-en" style="display: none;">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="lang-es">Correo Electrónico</label>
+                    <label for="email" class="lang-en" style="display: none;">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="lang-es">Mensaje</label>
+                    <label for="message" class="lang-en" style="display: none;">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn lang-es">Enviar Mensaje</button>
+                <button type="submit" class="submit-btn lang-en" style="display: none;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3 class="lang-es">Aura Bohemia</h3>
+            <h3 class="lang-en" style="display: none;">Aura Bohemia</h3>
+            
+            <p class="lang-es">Lima, Perú</p>
+            <p class="lang-en" style="display: none;">Lima, Peru</p>
+            
+            <div class="social-links">
+                <a href="#"><i>Instagram</i></a>
+                <a href="#"><i>Facebook</i></a>
+                <a href="#"><i>Pinterest</i></a>
+            </div>
+            
+            <p class="footer-text lang-es">© 2025 Aura Bohemia - Todos los derechos reservados</p>
+            <p class="footer-text lang-en" style="display: none;">© 2025 Aura Bohemia - All rights reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const spanishElements = document.querySelectorAll('.lang-es');
+            const englishElements = document.querySelectorAll('.lang-en');
+            const languageButton = document.getElementById('languageToggle');
+            
+            if (languageButton.textContent === 'English') {
+                // Switch to English
+                spanishElements.forEach(el => el.style.display = 'none');
+                englishElements.forEach(el => el.style.display = 'block');
+                languageButton.textContent = 'Español';
+            } else {
+                // Switch to Spanish
+                spanishElements.forEach(el => el.style.display = 'block');
+                englishElements.forEach(el => el.style.display = 'none');
+                languageButton.textContent = 'English';
+            }
+        }
+    </script>
+</body>
+</html> 
